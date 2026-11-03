@@ -144,6 +144,20 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .site-downloads td:nth-child(2){text-align:left}
 .site-downloads code{white-space:nowrap}
 
+/* The map strip: real previews at one height, scrolling sideways. */
+.site-maps{display:flex;gap:16px;overflow-x:auto;padding:0 0 12px;
+  scroll-snap-type:x proximity}
+.site-map{flex:none;display:flex;flex-direction:column;gap:3px;color:var(--text);
+  text-decoration:none;scroll-snap-align:start}
+.site-map img{display:block;height:200px;width:auto;image-rendering:pixelated;
+  border:1px solid var(--border-strong);background:var(--surface-3);margin-bottom:8px;
+  transition:border-color var(--t-fast) var(--ease)}
+.site-map:hover img{border-color:var(--brand)}
+.site-map:hover .site-map-t{color:var(--brand)}
+.site-map-t{font-family:var(--font-display);font-size:18px;font-weight:600}
+.site-maps-btns{margin-top:20px}
+@media (max-width:640px){.site-map img{height:160px}}
+
 /* Three ways in: a ruled row of links, not a row of cards. */
 .site-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong)}

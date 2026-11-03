@@ -11,11 +11,40 @@
     "discord": "https://discord.gg/4XP4S9yfJ8",
     "reddit": "https://www.reddit.com/r/ColonizationGame/",
     "steam": "https://store.steampowered.com/app/327400/",
-    "gog": "https://www.gog.com/en/game/sid_meiers_colonization"
+    "gog": "https://www.gog.com/en/game/sid_meiers_colonization",
+    "maps": "https://opencol.github.io/maps/",
+    "mapsRepo": "https://github.com/OpenCol/maps",
+    "mapsSubmit": "https://github.com/OpenCol/maps/issues/new?template=map_submission.yml"
   },
   "downloads": [
-    { "match": "windows-x64", "label": "Windows", "detail": "Windows 10 or 11, 64-bit", "os": "windows" },
-    { "match": "macos", "label": "macOS", "detail": "macOS 11+, Apple silicon and Intel", "os": "mac" },
-    { "match": "windows-x86", "label": "Windows 32-bit", "detail": "Windows 10, 32-bit", "os": "windows32" }
-  ]
+    {
+      "match": "windows-x64",
+      "label": "Windows",
+      "detail": "Windows 10 or 11, 64-bit",
+      "os": "windows"
+    },
+    {
+      "match": "macos",
+      "label": "macOS",
+      "detail": "macOS 11+, Apple silicon and Intel",
+      "os": "mac"
+    },
+    {
+      "match": "windows-x86",
+      "label": "Windows 32-bit",
+      "detail": "Windows 10, 32-bit",
+      "os": "windows32"
+    }
+  ],
+  "maps": {
+    "catalog": "https://opencol.github.io/maps/maps.json",
+    "featured": [
+      "l-the-old-world-mazim",
+      "m-caribbean-islands-mazim",
+      "s-feudal-japan-mazim",
+      "assorted2-europe",
+      "m-africa-mazim",
+      "xxl-huge-world-mazim"
+    ]
+  }
 }

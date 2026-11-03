@@ -245,6 +245,35 @@ const shared = {
   shared.rulesHtml = markdown(section, { tag: latest.tag, root: "../" }).html.replace(/\{\{/g, "&#123;&#123;");
 }
 
+// The map archive (OpenCol/maps) is a site of its own; the landing page shows
+// how many maps it holds and a few of them. Its catalogue is public. If it
+// cannot be read, the build goes on from the last copy, or without the strip:
+// the archive being down is no reason not to publish a release.
+{
+  let maps = [];
+  const file = join(CACHE, "maps.json");
+  try {
+    if (args.has("--offline")) throw new Error("offline");
+    const res = await fetch(site.maps.catalog, { headers: { "User-Agent": "opencol.github.io" } });
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    maps = (await res.json()).maps;
+    await mkdir(CACHE, { recursive: true });
+    await writeFile(file, JSON.stringify(maps));
+  } catch (err) {
+    if (existsSync(file)) maps = JSON.parse(await readFile(file, "utf8"));
+    else console.warn(`maps: ${site.maps.catalog}: ${err.message}; no map strip`);
+  }
+  const base = site.maps.catalog.replace(/[^/]+$/, "");
+  shared.mapsCount = maps.length ? String(maps.length) : "Dozens of";
+  shared.mapsStrip = site.maps.featured.map((id) => maps.find((m) => m.id === id)).filter(Boolean)
+    .map((m) => `
+      <a class="site-map" href="${esc(site.links.maps)}">
+        <img src="${esc(base + m.preview_link)}" alt="${esc(m.name)}" loading="lazy">
+        <span class="site-map-t">${esc(m.name)}</span>
+        <span class="col-meta">${m.size.width} × ${m.size.height} · ${esc(m.author.replace(/\.$/, ""))}</span>
+      </a>`).join("");
+}
+
 // ---------------------------------------------------------------- pages
 
 // The landing page and anything else hand-written in src/pages/.

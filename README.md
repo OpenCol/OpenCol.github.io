@@ -27,6 +27,8 @@ it from [OpenCol/OpenCol](https://github.com/OpenCol/OpenCol) on GitHub:
 - the version, date and download buttons, from the latest release;
 - `/changelog/`, from that release's `CHANGELOG.md`;
 - `/changelog/<version>/`, one page per release, from its release notes;
+- the map count and the six featured maps (`site.json` > `maps.featured`), from
+  the public catalogue of [OpenCol/maps](https://github.com/OpenCol/maps);
 - on `/rules/`, every rule option and the `OPENCOL.INI` defaults, from the
   CHANGELOG's "The rules" section.
 
