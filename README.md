@@ -46,8 +46,8 @@ stops the build, so a typo cannot ship.
 
 Pages use the classes of [col.css](https://github.com/OpenCol/web-ui) (`col-card`,
 `col-btn`, `col-plate`...). Something another OpenCol page could use belongs
-there, not in `assets/site.css`. To update the vendored copy, build web-ui and copy
-`dist/col.css` to `assets/vendor/col.css`.
+there, not in `assets/site.css`. The copy here is a web-ui release; after a new one,
+`npm run sync-css -- vX.Y.Z` and commit.
 
 ## Deploying
 
