@@ -191,12 +191,11 @@ const longDate = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString("en-GB",
   { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 function downloadButtons(release) {
-  return site.downloads.map((d, i) => {
+  return site.downloads.map((d) => {
     const a = release.assets.find((x) => x.name.includes(d.match));
     if (!a) return "";
-    const kind = i === 0 ? "col-btn" : "col-btn col-btn--outline";
-    return `<a class="${kind} col-btn--lg" data-os="${d.os}" href="${esc(a.url)}">` +
-      `<span>Download for ${esc(d.label)}</span>` +
+    return `<a class="col-btn" data-os="${d.os}" href="${esc(a.url)}">` +
+      `<span><span class="site-btn-pre">Download for </span>${esc(d.label)}</span>` +
       `<span class="site-btn-meta">.zip · ${mb(a.size)}</span></a>`;
   }).join("\n      ");
 }

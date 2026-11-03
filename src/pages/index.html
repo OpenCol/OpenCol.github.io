@@ -1,227 +1,224 @@
-<!-- title: OpenCol — Sid Meier's Colonization, rebuilt for today's computers -->
-<!-- description: OpenCol is Sid Meier's Colonization (1994) rebuilt to run on Windows and macOS with no DOSBox: the same game, your old saves, and improvements you choose. Built with the community. -->
+<!-- title: OpenCol — Sid Meier's Colonization, on the computer you have now -->
+<!-- description: OpenCol is Sid Meier's Colonization (1994) rebuilt from the DOS game's own code, for Windows and macOS. No DOSBox. Your 1994 saves load. The rules change only if you change them. -->
 
 <main id="main">
 
+<!-- ============================================================ hero -->
 <section class="site-hero">
-  <div class="col-wrap col-wrap--wide site-hero-in">
-    <div class="col-gallery site-shots">
-      <a class="col-figure" style="--_ar:912/1136" href="{{root}}assets/img/america.png">
-        <img src="{{root}}assets/img/america.png" width="912" height="1136"
-          alt="The whole of the Americas in 1716 on one screen: the colonies, roads and villages of four nations">
-        <figcaption>The whole continent on one screen</figcaption></a>
-      <a class="col-figure" style="--_ar:1280/800" href="{{root}}assets/img/path-preview.png">
-        <img src="{{root}}assets/img/path-preview.png" width="1280" height="800"
-          alt="A scout dragged toward Providence: its route drawn on the map, numbered by the turn it reaches each stop">
-        <figcaption>The go-to route, numbered by the turn each stop is reached</figcaption></a>
-      <a class="col-figure" style="--_ar:1280/800" href="{{root}}assets/img/founding-fathers.png">
-        <img src="{{root}}assets/img/founding-fathers.png" width="1280" height="800"
-          alt="The Continental Congress choice: five Founding Fathers, each with a face, a field and what he would change">
-        <figcaption>Founding Fathers with faces, and what each would change for you</figcaption></a>
-    </div>
+  <div class="site-wrap">
+    <p class="site-kicker"><span>OpenCol {{version}}</span><span>test version</span><span>free · MIT</span></p>
+    <div class="site-hero-grid">
+    <h1 class="site-display">Colonization, as it was in&nbsp;1995.
+      <em>On the computer you have&nbsp;now.</em></h1>
+    <div>
+    <p class="site-hero-lead">Rebuilt from the DOS game's own code, checked against it turn by
+      turn. No DOSBox, nothing to configure, and your 1994 saves still load. The rules only change
+      if you change them.</p>
 
-    <div class="col-plate site-plate">
-      <div>
-      <p class="col-eyebrow">Sid Meier's Colonization, rebuilt</p>
-      <h1>OpenCol</h1>
-      <p class="col-lead"><i>Sid Meier's Colonization</i> (MicroProse, 1994) on today's
-        computers: one program for Windows or macOS, with no DOSBox and nothing to set up.
-        The same pictures, music and rules, your 1994 saved games, and improvements that
-        you choose to turn on.</p>
-      <div class="col-btnrow site-downloads-btns">
+    <div class="site-get">
+      <div class="site-downloads-btns">
       {{downloadButtons}}
       </div>
-      <p class="site-cta-note col-dim">
-        <span class="col-badge col-badge--warn">Test version</span>
-        OpenCol {{version}}, {{releaseDate}}. Expect rough edges, and
-        <a href="{{newIssueUrl}}">tell us</a> when you find one.
-        You need your own copy of the game.</p>
-      </div>
-      <dl class="col-plate-meta site-facts">
-        <div><dt>Latest</dt><dd><a href="{{root}}changelog/{{version}}/">{{version}}</a></dd></div>
-        <div><dt>Runs on</dt><dd>Windows · macOS</dd></div>
-        <div><dt>Plays</dt><dd>DOS version 3.0</dd></div>
-        <div><dt>Needs</dt><dd>Your own copy of the game</dd></div>
-        <div><dt>License</dt><dd>MIT · open source</dd></div>
-      </dl>
+      <p class="site-get-note">Bring your own copy of the 1994 game:
+        <a href="{{steamUrl}}">Steam</a> or <a href="{{gogUrl}}">GOG</a>.
+        Linux: <a href="{{githubUrl}}/blob/main/docs/DEVELOPING.md">build from source</a>.</p>
+    </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="site-wrap site-sheet">
+    <div class="site-dim" aria-hidden="true"><span>1280 × 800 — the original drew 320 × 200</span></div>
+    <div class="site-mosaic">
+      <figure class="site-shot site-shot--tall">
+        <img src="{{root}}assets/img/america.png" width="912" height="1136"
+          alt="The whole of the Americas in 1716 on one screen: the colonies, roads and villages of four nations">
+        <span class="site-callout" style="--x:64%;--y:57%"><span>four nations, one screen</span></span>
+        <figcaption><b>Fig. 1</b> The New World, zoomed all the way out.</figcaption>
+      </figure>
+      <figure class="site-shot">
+        <img src="{{root}}assets/img/path-preview.png" width="1280" height="800"
+          alt="A scout dragged toward Providence: its route drawn on the map, numbered by the turn it reaches each stop">
+        <span class="site-callout" style="--x:56%;--y:36%"><span>turn 4: arrives here</span></span>
+        <figcaption><b>Fig. 2</b> Drag a scout; the route says which turn it gets where.</figcaption>
+      </figure>
+      <figure class="site-shot">
+        <img src="{{root}}assets/img/founding-fathers.png" width="1280" height="800"
+          alt="The Continental Congress choice: five Founding Fathers, each with a face, a field and what he would change">
+        <span class="site-callout" style="--x:47%;--y:30%"><span>what he'd do for you, now</span></span>
+        <figcaption><b>Fig. 3</b> Congress picks a Founding Father. With faces, finally.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<div class="col-wrap col-wrap--wide site-sections">
-
-<section id="features" aria-labelledby="features-h">
-  <div class="col-sectionhead"><h2 id="features-h">What is different</h2></div>
-  <p class="col-lead site-narrow">It is the same game, made from the DOS game's own code and
-    checked against it turn by turn. OpenCol only adds what makes it easier to play today,
-    and nothing new is forced on you.</p>
-  <div class="col-grid site-features">
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">Runs today</p>
-      <h3>No DOSBox, nothing to set up</h3>
-      <p class="col-dim">Windows 10 and 11, macOS 11 or later; Linux from source. A window or
-        full screen with <kbd>F11</kbd>.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">The screen</p>
-      <h3>More of the map</h3>
-      <p class="col-dim">Larger screen sizes, UI Scale, and a World View that pans by the pixel
-        and zooms out to the whole continent.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">Settings</p>
-      <h3>Everything in one place</h3>
-      <p class="col-dim">Screen, volume sliders, edge scrolling and the original's game options,
-        on five pages.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">On the map</p>
-      <h3>The map tells you more</h3>
-      <p class="col-dim">The go-to route as you drag, action cursors, village notes and the
-        Village Adviser.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">Popups</p>
-      <h3>Fewer of them</h3>
-      <p class="col-dim">Founding Father cards, one Turn Report page, scrolling lists in place
-        of pages, and Combat Analysis in full.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">Rules</p>
-      <h3>Rule options you choose</h3>
-      <p class="col-dim">Where players disagree about a rule, you decide. At 0, every option is
-        the original's rule.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">Maps</p>
-      <h3>The map editor, built in</h3>
-      <p class="col-dim">Place resources, villages, units and start squares, then
-        <i>Play This Map in Game</i>. Maps up to 228 squares a side.</p>
-    </div>
-    <div class="col-card col-card--ticks">
-      <p class="col-eyebrow">Saved games</p>
-      <h3>Your 1994 saves still load</h3>
-      <p class="col-dim">Quick Save, ten turns of autosaves, and Exit to Main Menu. A save that
-        cannot load says why.</p>
-    </div>
-  </div>
-  <p class="site-more"><a class="col-btn col-btn--ghost" href="{{root}}changelog/">Every
-    change, with before-and-after pictures →</a></p>
+<!-- ============================================================ spec -->
+<section class="site-wrap" aria-label="At a glance">
+  <dl class="site-spec">
+    <div><dt>Made from</dt><dd>The DOS game's own code, version 3.0, February 1995</dd></div>
+    <div><dt>Checked</dt><dd>Turn by turn against games recorded in the original</dd></div>
+    <div><dt>Loads</dt><dd>Your 1994 saved games and maps</dd></div>
+    <div><dt>Runs on</dt><dd>Windows 10 &amp; 11, macOS 11+, Linux from source</dd></div>
+  </dl>
 </section>
 
-<section id="mission" aria-labelledby="mission-h">
-  <div class="col-sectionhead"><h2 id="mission-h">The mission: one base, built together</h2></div>
-  <div class="site-split">
-    <div>
-      <p class="col-lead">OpenCol keeps <i>Sid Meier's Colonization</i> as it was, and lets the
-        community take it further. A player who wants the 1995 game gets it. A player who
-        wants more turns it on. Everyone builds on one shared base instead of each patching
-        the game alone.</p>
-      <p class="col-dim">Every change is one of four kinds, and the kind decides whether it
-        has a switch. Changes to the rules are decided with the community, in the open.</p>
-      <ol class="site-steps">
-        <li><b>An issue</b> says what changes, and which kind it is.</li>
-        <li><b>Discussion</b> on the issue and on Discord: which variant, what the computer
-          players do, the default.</li>
-        <li><b>The maintainers decide</b> and write the decision on the issue.</li>
-        <li><b>The change</b> is made and checked: with every option at 0, OpenCol still plays
-          as the 1995 game.</li>
-      </ol>
-      <p><a href="{{githubUrl}}/blob/main/docs/VISION.md">Read the whole vision</a> ·
-        <a href="{{githubUrl}}/blob/main/docs/GUIDE.md">The player's guide</a></p>
-    </div>
-    <div class="col-tiles site-kinds">
-      <div class="col-tile"><div class="col-tile-k">Quality of life</div>
-        <div class="col-tile-v col-tile-v--text">How it looks and feels</div>
-        <div class="col-tile-d">The rules stay the original's. A switch in Settings.</div></div>
-      <div class="col-tile"><div class="col-tile-k">Bug fix</div>
-        <div class="col-tile-v col-tile-v--text">Where the original crashes</div>
-        <div class="col-tile-d">Or contradicts itself. Fixed for everyone.</div></div>
-      <div class="col-tile col-tile--accent"><div class="col-tile-k">Rule option</div>
-        <div class="col-tile-v col-tile-v--text">Where players disagree</div>
-        <div class="col-tile-d">You choose; its default is decided with the community.</div></div>
-      <div class="col-tile"><div class="col-tile-k">Addition</div>
-        <div class="col-tile-v col-tile-v--text">New content</div>
-        <div class="col-tile-d">Portugal, bigger maps. Each behind its own option.</div></div>
-    </div>
+<!-- ============================================================ compare -->
+<section class="site-wrap site-section" id="compare" aria-labelledby="compare-h">
+  <div class="site-head">
+    <h2 class="site-display" id="compare-h">Same game. Less squinting.</h2>
+    <p>Everything new is a switch in Settings. Turn them all off and it is 1995 again. Drag the
+      line.</p>
   </div>
+
+  <div class="site-compare-tabs col-tabs" role="tablist" aria-label="Changes">
+    <button class="col-tab" role="tab" aria-selected="true" data-c="screen-size"
+      data-ar="640/400" data-say="The original shows 15 × 12 squares. OpenCol shows as much of the map as your screen holds.">Screen size</button>
+    <button class="col-tab" role="tab" aria-selected="false" data-c="goto-route"
+      data-ar="640/400" data-say="Drag a ship and see where it will sail, and on which turn it arrives. The original showed a pointer.">Go-to route</button>
+    <button class="col-tab" role="tab" aria-selected="false" data-c="founding-fathers"
+      data-ar="960/600" data-say="Five names in a list became five cards: a face, a field, and what each would change for you now.">Founding Fathers</button>
+    <button class="col-tab" role="tab" aria-selected="false" data-c="combat-analysis"
+      data-ar="640/400" data-say="Every step of both strengths, the hidden ones too, and the chance to win. Here: 88%.">Combat analysis</button>
+    <button class="col-tab" role="tab" aria-selected="false" data-c="turn-report"
+      data-ar="640/400" data-say="One page of the colonies' news, worst first, instead of a popup for each.">Turn report</button>
+    <button class="col-tab" role="tab" aria-selected="false" data-c="village-notes"
+      data-ar="480/400" data-say="The sidebar remembers what the chief told you: what the village teaches, sells and wants.">Village notes</button>
+  </div>
+
+  <div class="site-compare" style="--x:50%;--_ar:640/400">
+    <img class="site-compare-after" src="{{root}}assets/img/compare/screen-size-after.png" alt="OpenCol">
+    <img class="site-compare-before" src="{{root}}assets/img/compare/screen-size-before.png" alt="The original, 1995">
+    <span class="site-compare-line" aria-hidden="true"></span>
+    <span class="site-compare-tag" aria-hidden="true">1995</span>
+    <span class="site-compare-tag site-compare-tag--r" aria-hidden="true">OpenCol</span>
+    <input type="range" min="0" max="100" value="50" aria-label="Slide between the original and OpenCol">
+  </div>
+  <p class="site-compare-say">The original shows 15 × 12 squares. OpenCol shows as much of the map as your screen holds.</p>
 </section>
 
-<section id="download" aria-labelledby="download-h">
-  <div class="col-sectionhead"><h2 id="download-h">Get started</h2></div>
-  <div class="col-grid site-start">
-    <div class="col-card col-card--line">
-      <p class="col-eyebrow">1 · Your own copy</p>
-      <h3>Get the 1994 game</h3>
-      <p class="col-dim">OpenCol contains no game files. You need <i>Sid Meier's
-        Colonization</i> for DOS, as sold today:</p>
-      <div class="col-btnrow">
-        <a class="col-btn col-btn--outline col-btn--sm" href="{{steamUrl}}">Steam</a>
-        <a class="col-btn col-btn--outline col-btn--sm" href="{{gogUrl}}">GOG</a>
-      </div>
-      <p class="col-faint site-small">Buy the 1994 <i>Classic</i> game, not
-        <i>Civilization IV: Colonization</i> (2008).</p>
-    </div>
-    <div class="col-card col-card--line">
-      <p class="col-eyebrow">2 · OpenCol</p>
-      <h3>Download the test version</h3>
-      <p class="col-dim">OpenCol {{version}}, released {{releaseDate}}.</p>
-      {{downloadTable}}
-      <p class="col-faint site-small">On Linux, <a href="{{githubUrl}}/blob/main/docs/DEVELOPING.md">build it
-        from source</a>. Older versions are in the <a href="{{root}}changelog/">changelog</a>.</p>
-    </div>
-    <div class="col-card col-card--line">
-      <p class="col-eyebrow">3 · Play</p>
-      <h3>Unpack and start</h3>
-      <p class="col-dim">Unpack the zip where you can write (not in <code>Program Files</code>)
-        and start <code>opencol</code>. The first time, it asks for your game's folder: the one
-        with <code>VICEROY.EXE</code> in it.</p>
-      <p class="col-faint site-small"><b>macOS:</b> OpenCol is not signed by Apple, so the
-        first time, right-click <code>opencol</code> and choose <i>Open</i>.
-        <b>Upgrading:</b> unpack the new version over the old folder.</p>
-    </div>
+<!-- ============================================================ list -->
+<section class="site-wrap site-section" id="features" aria-labelledby="features-h">
+  <div class="site-head">
+    <h2 class="site-display" id="features-h">And the rest of the list</h2>
+    <p>Twelve releases since October. Each line says the version it came in.</p>
   </div>
+  <div class="site-ledger">
+    <ul>
+      <li><span>A window or full screen, <kbd>F11</kbd> to switch</span><i>0.1</i></li>
+      <li><span>Sound Blaster and AdLib music, every note</span><i>0.2</i></li>
+      <li><span>The map editor, built in, with <em>Play This Map</em></span><i>0.3</i></li>
+      <li><span>UI scale 1× to 6×, sharp on high-DPI screens</span><i>0.4</i></li>
+      <li><span>Colony and Europe in a window over the map</span><i>0.4</i></li>
+      <li><span>Start it from anywhere; it asks for the game once</span><i>0.5</i></li>
+      <li><span>Edge scrolling, middle-drag, wheel zoom</span><i>0.6</i></li>
+      <li><span>Quick Save, and the last ten turns' autosaves</span><i>0.6</i></li>
+    </ul>
+    <ul>
+      <li><span>Exit to Main Menu, without quitting the program</span><i>0.6</i></li>
+      <li><span>Maps up to 228 squares a side</span><i>0.6</i></li>
+      <li><span>Action cursors: talk, attack, landfall</span><i>0.7</i></li>
+      <li><span>Scroll bars instead of "+ More +"</span><i>0.8</i></li>
+      <li><span>World View: pan by the pixel, zoom to the continent</span><i>0.9</i></li>
+      <li><span>100 trade routes, not 12</span><i>0.9</i></li>
+      <li><span>An abandoned colony's ships put to sea</span><i>0.9</i></li>
+      <li><span>Hammers and bells carry over to the next build</span><i>0.10</i></li>
+    </ul>
+  </div>
+  <p class="site-more"><a href="{{root}}changelog/">The whole changelog, with before-and-after pictures</a></p>
 </section>
 
-<section id="community" aria-labelledby="community-h">
-  <div class="col-sectionhead"><h2 id="community-h">Community</h2></div>
-  <p class="col-lead site-narrow">OpenCol is made by the people who play it. Report what
-    breaks, argue about the rules, and help build what comes next.</p>
-  <div class="col-grid site-community">
-    <a class="col-card col-card--hover site-link-card" href="{{discordUrl}}">
-      <p class="col-eyebrow">Discord</p>
-      <h3>Talk about the game</h3>
-      <p class="col-dim">Strategy, rule options, what to build next. The fastest place to ask
-        a question.</p>
-      <span class="site-go">Join the Discord →</span>
-    </a>
-    <a class="col-card col-card--hover site-link-card" href="{{newIssueUrl}}">
-      <p class="col-eyebrow">GitHub issues</p>
-      <h3>Report a problem</h3>
-      <p class="col-dim">Something does not work, or plays differently from the 1995 game.
-        Attach a saved game from just before it, and <code>OPENCOL.LOG</code>.</p>
-      <span class="site-go">Open an issue →</span>
-    </a>
-    <a class="col-card col-card--hover site-link-card" href="{{githubUrl}}/blob/main/CONTRIBUTING.md">
-      <p class="col-eyebrow">Contribute</p>
-      <h3>Help build it</h3>
-      <p class="col-dim">Code, rules research, pictures, or this website. Your first change
-        takes about 30 minutes.</p>
-      <span class="site-go">How to contribute →</span>
-    </a>
+<!-- ============================================================ rules -->
+<section class="site-wrap site-section site-rules" id="community" aria-labelledby="rules-h">
+  <div>
+    <h2 class="site-display" id="rules-h">The rules go to Congress</h2>
+    <p>Some players call a rule a bug. Others call it the game. OpenCol doesn't pick a side: a
+      change like that becomes a rule option. At <code>0</code> it is the original's rule, and its
+      default gets argued out in public, on the issue and on Discord, before it is merged.</p>
+    <p>Two of them are on in 0.10. Two more are proposed. The floor is open.</p>
+    <div class="col-btnrow site-rules-btns">
+      <a class="col-btn col-btn--lg" href="{{discordUrl}}">Join the Discord</a>
+      <a class="col-btn col-btn--outline col-btn--lg" href="{{newIssueUrl}}">Propose a rule</a>
+      <a class="col-btn col-btn--quiet col-btn--lg" href="{{newIssueUrl}}">Report a bug</a>
+    </div>
+    <p class="site-small">Something plays differently from the 1995 game? Attach a save from
+      just before it, and <code>OPENCOL.LOG</code>. Want to help build it?
+      <a href="{{githubUrl}}/blob/main/CONTRIBUTING.md">Your first change takes about 30
+      minutes.</a></p>
   </div>
+  <figure class="site-ini">
+    <figcaption>OPENCOL.INI</figcaption>
+<pre><code><span class="c">; 0 is the original's rule. Yours to change.</span>
+<span class="s">[Rules]</span>
+custom-house-obeys-boycotts   = <b>1</b>
+hammers-and-bells-carry-over  = <b>1</b>
+ai-loads-what-it-plans        = 0
+colonists-may-leave-stockades = 0
+passengers-stay-aboard        = 0  <span class="c">; on is proposed</span>
+natives-offer-peace-again     = 0  <span class="c">; on is proposed</span></code></pre>
+  </figure>
 </section>
 
-<section id="releases" aria-labelledby="releases-h">
-  <div class="col-sectionhead"><h2 id="releases-h">Latest releases</h2></div>
+<!-- ============================================================ start -->
+<section class="site-wrap site-section" id="download" aria-labelledby="start-h">
+  <div class="site-head">
+    <h2 class="site-display" id="start-h">Three steps, no DOSBox</h2>
+  </div>
+  <ol class="site-steps">
+    <li><b>Have the 1994 game.</b> OpenCol contains none of it. The <i>Classic</i> on
+      <a href="{{steamUrl}}">Steam</a> or <a href="{{gogUrl}}">GOG</a>, not <i>Civilization IV:
+      Colonization</i>.</li>
+    <li><b>Unzip OpenCol</b> anywhere you can write: not <code>Program Files</code>. On a Mac,
+      the first time, right-click <code>opencol</code> and choose <i>Open</i>.</li>
+    <li><b>Start it,</b> and show it the folder with <code>VICEROY.EXE</code>. It remembers. To
+      upgrade, unzip the next version over the old one.</li>
+  </ol>
+  {{downloadTable}}
+</section>
+
+<!-- ============================================================ releases -->
+<section class="site-wrap site-section" id="releases" aria-labelledby="releases-h">
+  <div class="site-head">
+    <h2 class="site-display" id="releases-h">Ship's log</h2>
+  </div>
   <ul class="site-releases">{{recentReleases}}
   </ul>
-  <p class="site-more"><a class="col-btn col-btn--ghost" href="{{root}}changelog/">All {{releaseCount}} releases →</a></p>
+  <p class="site-more"><a href="{{root}}changelog/">All {{releaseCount}} releases</a></p>
 </section>
 
-</div>
-
-<img class="col-banner site-ship" src="{{root}}assets/img/ship-sailing.png" width="1280" height="400"
-  alt="Two sailing ships with striped sails on a rough sea at sunset" loading="lazy">
+<!-- ============================================================ land ho -->
+<section class="site-landho">
+  <img class="col-banner site-ship" src="{{root}}assets/img/ship-sailing.png" width="1280" height="400"
+    alt="Two sailing ships with striped sails on a rough sea at sunset" loading="lazy">
+  <div class="site-wrap site-landho-in">
+    <p class="site-display site-landho-t">Land ho.</p>
+    <div class="site-downloads-btns">
+    {{downloadButtons}}
+    </div>
+  </div>
+</section>
 
 </main>
+
+<script>
+  // The before-and-after slider: the range input moves the line; a tab swaps
+  // the pair of pictures.
+  (function () {
+    var box = document.querySelector(".site-compare");
+    if (!box) return;
+    var range = box.querySelector("input");
+    var before = box.querySelector(".site-compare-before");
+    var after = box.querySelector(".site-compare-after");
+    var say = document.querySelector(".site-compare-say");
+    var base = after.getAttribute("src").replace(/[^/]+$/, "");
+    range.addEventListener("input", function () { box.style.setProperty("--x", range.value + "%"); });
+    document.querySelectorAll(".site-compare-tabs [data-c]").forEach(function (tab, _, all) {
+      tab.addEventListener("click", function () {
+        all.forEach(function (t) { t.setAttribute("aria-selected", String(t === tab)); });
+        before.src = base + tab.dataset.c + "-before.png";
+        after.src = base + tab.dataset.c + "-after.png";
+        box.style.setProperty("--_ar", tab.dataset.ar);
+        say.textContent = tab.dataset.say;
+      });
+    });
+  })();
+</script>

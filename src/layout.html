@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{{root}}assets/vendor/col.css">
 <link rel="stylesheet" href="{{root}}assets/site.css">
 </head>
-<body>
+<body class="col-ruled">
 <a class="site-skip" href="#main">Skip to the content</a>
 
 <header class="col-bar">
@@ -22,9 +22,9 @@
     <a class="col-brand" href="{{root}}"><span class="col-brand-mark"></span> OpenCol</a>
     <a class="col-badge col-badge--line site-version" href="{{root}}changelog/{{version}}/">v{{version}}</a>
     <nav class="site-menu" aria-label="Site">
-      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#features">Features</a>
-      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#mission">Mission</a>
-      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#community">Community</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#compare">Before &amp; after</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#community">The rules</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{discordUrl}}">Discord</a>
       <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}changelog/">Changelog</a>
       <a class="col-btn col-btn--quiet col-btn--sm" href="{{githubUrl}}">GitHub</a>
     </nav>
@@ -35,7 +35,7 @@
 {{content}}
 
 <footer class="site-foot">
-  <div class="col-wrap col-wrap--wide site-foot-in">
+  <div class="site-wrap site-foot-in">
     <div class="site-foot-cols">
       <div>
         <p class="col-nav-title">OpenCol</p>
@@ -71,10 +71,7 @@
     if (!os) return;
     document.querySelectorAll(".site-downloads-btns").forEach(function (row) {
       var mine = row.querySelector('[data-os="' + os + '"]');
-      if (!mine || mine === row.firstElementChild) return;
-      row.querySelectorAll("[data-os]").forEach(function (b) { b.classList.add("col-btn--outline"); });
-      mine.classList.remove("col-btn--outline");
-      row.insertBefore(mine, row.firstElementChild);
+      if (mine && mine !== row.firstElementChild) row.insertBefore(mine, row.firstElementChild);
     });
   })();
 
