@@ -12,11 +12,16 @@
         game's own code and checked against it turn by turn. No DOSBox, nothing to configure, and
         your 1994 saves still load. The rules only change if you change them.</p>
       <div class="site-get">
+        <a class="site-new" href="{{root}}changelog/{{version}}/">
+          <span class="col-badge col-badge--line">New in {{latestShort}}</span>
+          <span class="site-new-t">{{latestSummary}}</span>
+        </a>
         <div class="site-downloads-btns">
         {{downloadButtons}}
         </div>
-        <p class="site-get-note">Test version {{version}}, {{releaseDate}}. Bring your own copy of
-          the 1994 game: <a href="{{steamUrl}}">Steam</a> or <a href="{{gogUrl}}">GOG</a>.</p>
+        <p class="site-get-note">Test version {{version}}, {{releaseDate}} ·
+          <a href="{{root}}changelog/">changelog</a>. Bring your own copy of the 1994 game:
+          <a href="{{steamUrl}}">Steam</a> or <a href="{{gogUrl}}">GOG</a>.</p>
       </div>
     </div>
   </div>

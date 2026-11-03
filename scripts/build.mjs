@@ -212,8 +212,19 @@ function downloadTable(release) {
       </table></div></div>`;
 }
 
+// The first sentence of a release's notes, as plain text, without the
+// "OpenCol 0.10.0:" in front: "hammers and bells carry over, and ...".
+function summary(r) {
+  const line = r.body.split("\n").find((l) => l.trim()) || "";
+  const text = line.replace(/^OpenCol\s+[\d.]+:\s*/, "").replace(/\*\*|__|`/g, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\.\s*$/, "").trim();
+  return text ? text[0].toUpperCase() + text.slice(1) : `What came in ${r.version}`;
+}
+
 const shared = {
   name: site.name,
+  latestShort: latest.version.replace(/\.0$/, ""),
+  latestSummary: esc(summary(latest)),
   siteUrl: site.url,
   version: latest.version,
   releaseDate: longDate(latest.date),

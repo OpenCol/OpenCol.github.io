@@ -48,6 +48,14 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 @media (max-width:960px){.site-hero-grid{grid-template-columns:1fr}}
 
 .site-get{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+/* What's new: the latest release in one line, over the download. */
+.site-new{display:inline-flex;align-items:center;gap:10px;max-width:100%;
+  padding:5px 12px 5px 5px;font-size:14px;color:var(--text-2);text-decoration:none;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);
+  transition:border-color var(--t-fast) var(--ease)}
+.site-new:hover{border-color:var(--brand);color:var(--text)}
+.site-new-t{min-width:0;line-height:1.4}
+.site-new-t::after{content:" \2192";color:var(--brand)}
 .site-get-note{margin:0;font-size:14px;color:var(--text-3);max-width:46ch}
 
 /* The download for this computer, big; the other two stacked small beside it.
