@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="{{siteUrl}}assets/img/path-preview.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="{{root}}assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{{root}}assets/vendor/col.css">
+<link rel="stylesheet" href="{{root}}assets/site.css">
+</head>
+<body>
+<a class="site-skip" href="#main">Skip to the content</a>
+
+<header class="col-bar">
+  <div class="col-bar-in">
+    <a class="col-brand" href="{{root}}"><span class="col-brand-mark"></span> OpenCol</a>
+    <a class="col-badge col-badge--line site-version" href="{{root}}changelog/{{version}}/">v{{version}}</a>
+    <nav class="site-menu" aria-label="Site">
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#features">Features</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#mission">Mission</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}#community">Community</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{root}}changelog/">Changelog</a>
+      <a class="col-btn col-btn--quiet col-btn--sm" href="{{githubUrl}}">GitHub</a>
+    </nav>
+    <a class="col-btn col-btn--sm col-push" href="{{root}}#download">Download</a>
+  </div>
+</header>
+
+{{content}}
+
+<footer class="site-foot">
+  <div class="col-wrap col-wrap--wide site-foot-in">
+    <div class="site-foot-cols">
+      <div>
+        <p class="col-nav-title">OpenCol</p>
+        <a href="{{root}}#download">Download {{version}}</a>
+        <a href="{{root}}changelog/">Changelog</a>
+        <a href="{{githubUrl}}">Source code</a>
+      </div>
+      <div>
+        <p class="col-nav-title">Community</p>
+        <a href="{{discordUrl}}">Discord</a>
+        <a href="{{newIssueUrl}}">Report a problem</a>
+        <a href="{{redditUrl}}">r/ColonizationGame</a>
+      </div>
+      <div>
+        <p class="col-nav-title">This site</p>
+        <a href="{{siteRepoUrl}}">Edit it on GitHub</a>
+        <a href="{{siteRepoUrl}}/issues/new">Suggest a change</a>
+      </div>
+    </div>
+    <p class="col-faint site-legal"><i>Sid Meier's Colonization</i> is © 1994–1995 MicroProse
+      Software, Inc. OpenCol is not affiliated with or endorsed by MicroProse, Take-Two
+      Interactive, Firaxis Games or Sid Meier. OpenCol contains no game files: you need your
+      own copy. OpenCol's own code is MIT licensed.</p>
+  </div>
+</footer>
+
+<script>
+  // The download that fits this computer comes first. Without JavaScript the
+  // order is the page's own: Windows 64-bit, macOS, Windows 32-bit.
+  (function () {
+    var p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+    var os = /mac/i.test(p) ? "mac" : /win/i.test(p) ? "windows" : null;
+    if (!os) return;
+    document.querySelectorAll(".site-downloads-btns").forEach(function (row) {
+      var mine = row.querySelector('[data-os="' + os + '"]');
+      if (!mine || mine === row.firstElementChild) return;
+      row.querySelectorAll("[data-os]").forEach(function (b) { b.classList.add("col-btn--outline"); });
+      mine.classList.remove("col-btn--outline");
+      row.insertBefore(mine, row.firstElementChild);
+    });
+  })();
+
+  // The changelog index folds away on a narrow screen.
+  document.querySelectorAll(".col-docs-toggle").forEach(function (b) {
+    var side = document.getElementById(b.getAttribute("aria-controls"));
+    b.addEventListener("click", function () {
+      var open = side.classList.toggle("is-open");
+      b.setAttribute("aria-expanded", String(open));
+    });
+  });
+</script>
+</body>
+</html>

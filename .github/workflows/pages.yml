@@ -1,0 +1,53 @@
+# Builds the site and deploys it to GitHub Pages.
+#
+# It runs on every push to main, every morning (so a new OpenCol release shows
+# up on its own), and by hand. OpenCol/OpenCol may be private: the build reads
+# its releases with the OPENCOL_TOKEN secret, a fine-grained token with
+# read-only Contents access to that one repository.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [opencol-release]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          OPENCOL_TOKEN: ${{ secrets.OPENCOL_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
