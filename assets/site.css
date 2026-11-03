@@ -194,15 +194,13 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .site-ini .s{color:var(--brand)}
 .site-rules-prose{max-width:78ch}
 
-/* ---------------------------------------------------------------- land ho */
+/* ---------------------------------------------------------------- the ship */
 .site-landho{padding-top:112px;text-align:center}
 /* A watercolour on white paper: on the page, the paper melts into the ground. */
 .site-ship{width:calc(100% - 56px);max-width:calc(var(--site-w) - 56px);
   mix-blend-mode:multiply}
-.site-landho-in{padding:24px 28px 96px;display:flex;flex-direction:column;
+.site-landho-in{padding:32px 28px 96px;display:flex;flex-direction:column;
   align-items:center;gap:28px}
-.site-landho-t{font-size:clamp(48px,8vw,104px);font-style:italic;font-weight:400;
-  margin:0;color:var(--text)}
 .site-landho .site-downloads-btns{justify-content:center}
 
 /* ---------------------------------------------------------------- footer */
