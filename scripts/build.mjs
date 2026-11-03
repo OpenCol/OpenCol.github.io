@@ -32,8 +32,14 @@ const site = JSON.parse(await readFile(join(ROOT, "site.json"), "utf8"));
 // token (OPENCOL_TOKEN, else GITHUB_TOKEN), and what a visitor downloads or
 // sees - the latest zips, the changelog's pictures - is copied into the site
 // rather than linked. Every response is cached in .cache/ for --offline.
+//
+// When GitHub cannot be read - the repository private and no token, as on the
+// Pages workflow until OpenCol/OpenCol is public - the build falls back to
+// snapshot/, a committed copy of .cache/ (npm run snapshot), and says so.
 
 const TOKEN = process.env.OPENCOL_TOKEN || process.env.GITHUB_TOKEN;
+const SNAPSHOT = join(ROOT, "snapshot");
+let usedSnapshot = false;
 
 async function api(path, accept, cacheAs) {
   const file = join(CACHE, cacheAs);
@@ -44,6 +50,12 @@ async function api(path, accept, cacheAs) {
   if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`;
   const res = await fetch(`https://api.github.com/${path}`, { headers });
   if (!res.ok) {
+    const fallback = join(SNAPSHOT, cacheAs);
+    if (existsSync(fallback)) {
+      if (!usedSnapshot) console.warn(`GET ${path}: ${res.status}; building from snapshot/`);
+      usedSnapshot = true;
+      return readFile(fallback);
+    }
     const hint = res.status === 404 && !TOKEN ? " (a private repository needs OPENCOL_TOKEN)" : "";
     throw new Error(`GET ${path}: ${res.status} ${res.statusText}${hint}`);
   }
@@ -260,7 +272,8 @@ const shared = {
     await mkdir(CACHE, { recursive: true });
     await writeFile(file, JSON.stringify(maps));
   } catch (err) {
-    if (existsSync(file)) maps = JSON.parse(await readFile(file, "utf8"));
+    const fallback = [file, join(SNAPSHOT, "maps.json")].find((f) => existsSync(f));
+    if (fallback) maps = JSON.parse(await readFile(fallback, "utf8"));
     else console.warn(`maps: ${site.maps.catalog}: ${err.message}; no map strip`);
   }
   const base = site.maps.catalog.replace(/[^/]+$/, "");

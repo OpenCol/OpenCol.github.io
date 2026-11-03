@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/build.mjs --serve",
-    "sync-css": "node scripts/sync-css.mjs"
+    "sync-css": "node scripts/sync-css.mjs",
+    "snapshot": "rm -rf snapshot && OPENCOL_TOKEN=$(gh auth token) node scripts/build.mjs && cp -R .cache snapshot"
   },
   "dependencies": {
     "marked": "^18.0.0"

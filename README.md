@@ -57,6 +57,18 @@ there, not in `assets/site.css`. The copy here is a web-ui release; after a new 
 ## Deploying
 
 `.github/workflows/pages.yml` builds and deploys on every push to `main`, every
-morning, and by hand (*Actions > Pages > Run workflow*). It needs one secret,
-`OPENCOL_TOKEN`: a fine-grained token with read-only *Contents* access to
-OpenCol/OpenCol. Once that repository is public, the secret can go.
+morning, and by hand (*Actions > Pages > Run workflow*).
+
+**While OpenCol/OpenCol is private**, the workflow cannot read its releases, and
+the build falls back to `snapshot/`: a committed copy of the release list, the
+CHANGELOG, its pictures and the latest zips. After an OpenCol release, refresh it
+and push:
+
+```sh
+npm run snapshot      # needs gh, logged in with access to OpenCol/OpenCol
+git add snapshot && git commit -m "Snapshot: OpenCol X.Y" && git push
+```
+
+(Or add an `OPENCOL_TOKEN` secret, a fine-grained token with read-only
+*Contents* access to OpenCol/OpenCol, and the workflow reads the releases live.)
+Once the repository is public, neither is needed and `snapshot/` can go.
