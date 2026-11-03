@@ -1,0 +1,54 @@
+<!-- title: The rules — OpenCol -->
+<!-- description: Where players disagree about a rule of Sid Meier's Colonization, OpenCol makes it an option. At 0 it is the original's rule; its default is decided in public. -->
+
+<main id="main">
+
+<section class="site-wrap site-page-head">
+  <div class="site-rules">
+    <div>
+      <h1 class="site-display">The rules go to Congress</h1>
+      <p>Some players call a rule a bug. Others call it the game. OpenCol doesn't pick a side:
+        a change like that becomes a rule option. At <code>0</code> it is the original's rule, and
+        its default is argued out in public, on the issue and on Discord, before it is merged.</p>
+      <p>A game keeps the rules it started with, in its saved games too. A 1994 saved game plays
+        by the original's rules.</p>
+    </div>
+    <figure class="site-ini">
+      <figcaption>OPENCOL.INI, as {{version}} writes it</figcaption>
+<pre><code>{{rulesIni}}</code></pre>
+    </figure>
+  </div>
+</section>
+
+<section class="site-wrap site-section site-section--tight" aria-labelledby="decide-h">
+  <div class="site-head">
+    <h2 class="site-display" id="decide-h">How a rule is decided</h2>
+    <p>The same four steps for every one. When it is not clear what kind of change something
+      is, ask in the issue before writing the code.</p>
+  </div>
+  <ol class="site-steps site-steps--4">
+    <li><b>An issue</b> says what changes, and proposes a default and why.</li>
+    <li><b>Discussion</b> on the issue and on Discord: which variant, what the computer players
+      do, the default.</li>
+    <li><b>The maintainers decide,</b> and write the decision on the issue.</li>
+    <li><b>The change</b> is made with a rules test. With every option at 0, OpenCol still plays
+      as the 1995 game.</li>
+  </ol>
+  <div class="col-btnrow">
+    <a class="col-btn col-btn--lg" href="{{discordUrl}}" target="_blank" rel="noopener">Discuss on Discord</a>
+    <a class="col-btn col-btn--outline col-btn--lg" href="{{newIssueUrl}}" target="_blank" rel="noopener">Propose a rule</a>
+    <a class="col-btn col-btn--quiet col-btn--lg" href="{{githubUrl}}/blob/main/docs/VISION.md">Read the whole vision</a>
+  </div>
+</section>
+
+<section class="site-wrap site-section site-section--tight" aria-labelledby="every-h">
+  <div class="site-head">
+    <h2 class="site-display" id="every-h">Every rule option</h2>
+    <p>From the CHANGELOG of {{version}}: what each one does, why, and how to turn it off.</p>
+  </div>
+  <div class="col-prose site-rules-prose">
+{{rulesHtml}}
+  </div>
+</section>
+
+</main>

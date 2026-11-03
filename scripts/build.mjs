@@ -212,23 +212,6 @@ function downloadTable(release) {
       </table></div></div>`;
 }
 
-// A release's headline: its title after "OpenCol x.y:", else the first bold
-// phrase of its notes ("OpenCol 0.10.0: **hammers and bells carry over**").
-function headline(r) {
-  const title = r.name.replace(/^OpenCol\s+[\d.]+:?\s*/, "");
-  if (title) return title;
-  const bold = r.body.split("\n")[0].match(/\*\*(.+?)\*\*/);
-  return bold ? bold[1][0].toUpperCase() + bold[1].slice(1).replace(/\.$/, "") : `Release ${r.version}`;
-}
-
-function releaseList(list) {
-  return list.map((r) => `
-        <li><a class="site-release" href="{{root}}changelog/${r.version}/">
-          <span class="col-mono">${r.version}</span>
-          <span class="site-release-t">${esc(headline(r))}</span>
-          <span class="col-meta">${r.date}</span></a></li>`).join("");
-}
-
 const shared = {
   name: site.name,
   siteUrl: site.url,
@@ -238,12 +221,29 @@ const shared = {
   releaseCount: String(releases.length),
   downloadButtons: downloadButtons(latest),
   downloadTable: downloadTable(latest),
-  recentReleases: "",
   year: String(new Date().getUTCFullYear()),
   siteRepoUrl: `https://github.com/${site.siteRepo}`,
   ...Object.fromEntries(Object.entries(site.links).map(([k, v]) => [`${k}Url`, v])),
 };
-shared.recentReleases = releaseList(releases.slice(0, 4));
+
+// The rules page is built from the CHANGELOG's own "The rules" section, so it
+// lists every rule option the latest release has, with its default.
+{
+  const section = (changelog.match(/^## The rules\n([\s\S]*?)(?=^## )/m) || [])[1];
+  if (!section) throw new Error("CHANGELOG.md has no '## The rules' section");
+  const options = [...section.matchAll(/^- \*\*([a-z0-9-]+)\*\*(.*)$/gm)].map((m) => ({
+    name: m[1], on: /on at first/.test(m[2]), proposed: /on is proposed/.test(m[2]),
+  }));
+  const width = Math.max(...options.map((o) => o.name.length));
+  shared.rulesCount = String(options.length);
+  shared.rulesIni = [
+    `<span class="c">; 0 is the original's rule. Yours to change.</span>`,
+    `<span class="s">[Rules]</span>`,
+    ...options.map((o) => `${o.name.padEnd(width)} = ${o.on ? "<b>1</b>" : "0"}` +
+      (o.proposed ? `  <span class="c">; on is proposed</span>` : "")),
+  ].join("\n");
+  shared.rulesHtml = markdown(section, { tag: latest.tag, root: "../" }).html.replace(/\{\{/g, "&#123;&#123;");
+}
 
 // ---------------------------------------------------------------- pages
 
@@ -253,7 +253,9 @@ for (const file of await readdir(join(ROOT, "src/pages"))) {
   const src = await readFile(join(ROOT, "src/pages", file), "utf8");
   // Front matter: <!-- title: ... --> and <!-- description: ... --> lines.
   const meta = Object.fromEntries([...src.matchAll(/^<!--\s*(\w+):\s*(.*?)\s*-->$/gm)].map((m) => [m[1], m[2]]));
-  page(file, { title: meta.title || site.name, description: meta.description || "", body: src });
+  // rules.html is served as /rules/; index.html and 404.html stay where they are.
+  const path = ["index.html", "404.html"].includes(file) ? file : `${file.replace(/\.html$/, "")}/index.html`;
+  page(path, { title: meta.title || site.name, description: meta.description || "", body: src });
 }
 
 // The changelog: one page for the CHANGELOG, one per release, one index of both.

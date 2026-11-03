@@ -4,6 +4,7 @@
   "repo": "OpenCol/OpenCol",
   "siteRepo": "OpenCol/OpenCol.github.io",
   "links": {
+    "org": "https://github.com/OpenCol",
     "github": "https://github.com/OpenCol/OpenCol",
     "issues": "https://github.com/OpenCol/OpenCol/issues",
     "newIssue": "https://github.com/OpenCol/OpenCol/issues/new",

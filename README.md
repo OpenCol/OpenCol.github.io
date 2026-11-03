@@ -11,6 +11,7 @@ screenshot, a feature that deserves a card? Open a pull request — every merge 
 
 ```
 src/pages/index.html    the landing page - edit this for the words on the front page
+src/pages/rules.html    /rules/ - how rule options are decided
 src/pages/404.html      the page for a broken link
 src/layout.html         the bar and footer every page shares
 assets/site.css         this site's own layout, on top of the design system
@@ -25,7 +26,9 @@ it from [OpenCol/OpenCol](https://github.com/OpenCol/OpenCol) on GitHub:
 
 - the version, date and download buttons, from the latest release;
 - `/changelog/`, from that release's `CHANGELOG.md`;
-- `/changelog/<version>/`, one page per release, from its release notes.
+- `/changelog/<version>/`, one page per release, from its release notes;
+- on `/rules/`, every rule option and the `OPENCOL.INI` defaults, from the
+  CHANGELOG's "The rules" section.
 
 The latest release's zips and the changelog's pictures are copied into the site
 (`/download/`, `/media/`), so they work while OpenCol/OpenCol is private.
