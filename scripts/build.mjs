@@ -43,7 +43,9 @@ let usedSnapshot = false;
 
 async function api(path, accept, cacheAs) {
   const file = join(CACHE, cacheAs);
-  if (args.has("--offline") || (cacheAs.startsWith("files/") && existsSync(file))) {
+  // A file at a tag never changes, so once fetched it is kept; a branch moves.
+  const fixed = cacheAs.startsWith("files/") && !cacheAs.startsWith(`files/${site.changelogRef}/`);
+  if (args.has("--offline") || (fixed && existsSync(file))) {
     return readFile(file);
   }
   const headers = { "User-Agent": "opencol.github.io", Accept: accept };
@@ -86,6 +88,11 @@ const releases = JSON.parse(await api(`repos/${site.repo}/releases?per_page=100`
 if (!releases.length) throw new Error(`no releases found in ${site.repo}`);
 const latest = releases[0];
 const changelog = String(await repoFile(latest.tag, "CHANGELOG.md"));
+// The "What OpenCol changes" page follows site.changelogRef (main): a fix to
+// the CHANGELOG or its pictures shows without waiting for a release. Its
+// unreleased lines say "(next)". The rules page stays on the release.
+const pageRef = site.changelogRef || latest.tag;
+const changelogPage = pageRef === latest.tag ? changelog : String(await repoFile(pageRef, "CHANGELOG.md"));
 
 // The latest release's zips are served from the site itself: /download/<name>.
 const mirrored = [];
@@ -354,14 +361,14 @@ ${safe}
 {
   // The CHANGELOG starts with its own "# What OpenCol changes" - the page
   // header says that, so the Markdown's h1 is dropped.
-  const { html, headings } = markdown(changelog.replace(/^# .*\n/, ""), { tag: latest.tag, root: "../" });
+  const { html, headings } = markdown(changelogPage.replace(/^# .*\n/, ""), { tag: pageRef, root: "../" });
   page("changelog/index.html", {
     title: `What OpenCol changes — ${site.name}`,
     description: "Everything OpenCol does differently from the 1995 game, by part of the game and release by release.",
     body: docsPage({
       current: "all",
       crumbs: `<li><a href="{{root}}">OpenCol</a></li><li>Changelog</li>`,
-      header: `<p class="col-eyebrow">Changelog · as of ${latest.version}</p>
+      header: `<p class="col-eyebrow">Changelog · ${pageRef === latest.tag ? `as of ${latest.version}` : `${latest.version} and after`}</p>
     <h1>What OpenCol changes</h1>`,
       html,
       headings,

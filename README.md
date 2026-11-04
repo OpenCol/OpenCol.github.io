@@ -25,12 +25,13 @@ What changes with every OpenCol release is **not** written here. The build reads
 it from [OpenCol/OpenCol](https://github.com/OpenCol/OpenCol) on GitHub:
 
 - the version, date and download buttons, from the latest release;
-- `/changelog/`, from that release's `CHANGELOG.md`;
+- `/changelog/`, from `CHANGELOG.md` on OpenCol's `main` (`site.json` >
+  `changelogRef`), so a fix to it or its pictures shows without a release;
 - `/changelog/<version>/`, one page per release, from its release notes;
 - the map count and the six featured maps (`site.json` > `maps.featured`), from
   the public catalogue of [OpenCol/maps](https://github.com/OpenCol/maps);
 - on `/rules/`, every rule option and the `OPENCOL.INI` defaults, from the
-  CHANGELOG's "The rules" section.
+  latest release's CHANGELOG, "The rules" section.
 
 The latest release's zips and the changelog's pictures are copied into the site
 (`/download/`, `/media/`), so they work while OpenCol/OpenCol is private.

@@ -3,6 +3,7 @@
   "url": "https://opencol.github.io/",
   "repo": "OpenCol/OpenCol",
   "siteRepo": "OpenCol/OpenCol.github.io",
+  "changelogRef": "main",
   "links": {
     "org": "https://github.com/OpenCol",
     "github": "https://github.com/OpenCol/OpenCol",
