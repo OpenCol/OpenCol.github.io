@@ -33,7 +33,11 @@ The original on the left, OpenCol on the right. Pictures live in `docs/changes/<
 | **Founding Fathers**: faces, and what each would change for you now (0.8) | ![The original's Founding Father choice: five names in a list](docs/changes/founding-fathers/before.png) | ![OpenCol's Founding Father cards: each face, field and effect](docs/changes/founding-fathers/after.png) |
 | **Turn Report**: the colonies' messages on one page, not one popup each (0.8) | ![The original: one popup per colony message, here New Haven out of ore](docs/changes/turn-report/before.png) | ![OpenCol's Turn Report: all 14 messages on one page, in a window over the map](docs/changes/turn-report/after.png) |
 | **Scrolling lists**: a scroll bar and the wheel, not pages (0.8) | ![The Village Adviser in pages](docs/changes/scrolling-lists/before.png) | ![The Village Adviser with a scroll bar](docs/changes/scrolling-lists/after.png) |
+| **A die for colony names**: click it, or press Tab, for another random free name (0.11) | ![The original's box naming a new colony: Barbados, typed or taken](docs/changes/colony-name-die/before.png) | ![OpenCol's box: a die left of the name, Barbados](docs/changes/colony-name-die/after.png) |
 | **Passengers stay aboard**: an empty caravel sails away from a loaded one and no longer takes its colonist (rule option, 0.10) | ![The original: the empty caravel sailed off with the other caravel's colonist, its list showing the colonist sentried aboard](docs/changes/passengers-stay-aboard/before.png) | ![With the option on: the caravel that sailed carries nobody, and the colonist stays on his own ship](docs/changes/passengers-stay-aboard/after.png) |
+| **Route ended**: a wagon train or ship that leaves its trade route says why (0.11) | ![The original: a wagon train boxed in by braves next to Jamestown has silently lost its route and waits with No Orders](docs/changes/route-ended/before.png) | ![OpenCol: the same moment, the top line reads Route ended: Wagon Train near Jamestown, way to Plymouth blocked](docs/changes/route-ended/after.png) |
+| **Save browser**: Load Game and Save Game show each saved game's map, nation, year, turn, colonies and gold (0.11) | ![The original's Load Game: a list of lines, Conquistador Daniel of the English, Spring 1716](docs/changes/save-browser/before.png) | ![OpenCol's Load Game: the slots on the left, the chosen game's map of the Americas on the right, and below it Daniel, English, Conquistador, Spring 1716, turn 340, 10 colonies, 11,099 gold, saved 2026-11-07 23:08](docs/changes/save-browser/after.png) |
+| **The trade route editor at any screen size**: a window over the map, not a box in its corner that a click on the map closed (0.11) | ![OpenCol 0.10 at 960 x 600: the route editor drawn in the map's top left corner, over the menu bar](docs/changes/route-editor-page/before.png) | ![The fix: the same editor in a window in the middle, over the dimmed map](docs/changes/route-editor-page/after.png) |
 
 Still without pictures: the volume sliders, Exit to Main Menu's question, the map editor's
 Place menu, trade routes and boycotts, ships leaving an abandoned colony.
@@ -76,6 +80,13 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
   black. (0.9)
 - **Screens over the map**: the colony, Europe, the reports and the Colonopedia can open in a
   window over the dimmed map. They keep the original's 320 x 200. (0.4)
+- **The trade route editor at any screen size**: on a screen larger than 320 x 200, TRADE >
+  Create and Edit Trade Route drew the editor in the map's top left corner, over the menu bar;
+  its lists opened in the middle of the map, and a click anywhere on the map below the editor's
+  height closed it, so routes could hardly be made or changed. The editor is now a page like
+  the colony and the reports: in the middle of the screen, over the dimmed map or alone
+  (Settings > Display > Screens), its clicks its own. The 320 x 200 screen was never affected.
+  A fix of OpenCol's own larger screen; nothing to turn off. (0.11)
 - **Pixels**: square, or as tall as a 1994 monitor showed them. (0.4)
 - **Stretch**: fill a large window, its shape kept, the pixels sharp. (0.6)
 
@@ -116,16 +127,42 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
 - **The sidebar's units on a square** scroll with the wheel, every one listed, in place of
   "+ More +". (0.8)
 - **Quick Save and Quick Load**: Ctrl+S and Ctrl+L. (0.6)
+- **A die for colony names**: the box that names a new colony has a die left of the name. A
+  click on it, or Tab, puts another random free name from your nation's list in the field (one
+  no colony has, never the one shown), as often as you like; typing, Enter and Esc work as
+  before. It takes the place of a "random colony names" switch in the game's options, which
+  nobody opens before every game. The suggestion is still the next free name in the list's
+  order, and it is used up only when you found the colony with it: a rolled or typed name, or
+  Esc, leaves it for the next colony (the original used it up as soon as the box opened).
+  Computer players name their colonies at random from their lists, rather than the list's first
+  names in order. Those two change what a saved game holds (the colonies' names and the list's
+  count), though no rule and no random number of the game's: the rolls are OpenCol's own.
+  Settings > Interface > **Colony Names: In Order** turns all of it off, and the names are the
+  original's. (0.11)
 - **Ships leave an abandoned colony**: when a colony is abandoned, starves or is disbanded, the
   ships in it sail out to the sea beside it with their passengers. The original left them on the
   land, where a land unit's attack showed a debug warning ("Bad defense") and they vanished.
   Always on, not a rule option. (0.9)
+- **A beaten ship sinks alone**: when the ship defending a square of sea loses, only it (sunk
+  or damaged, as before) and the units aboard it are lost. The original lost every other ship on
+  the square with it, and every unit aboard them, though they never fought, and the winner moved
+  in. Now the other ships stay, and the winner moves in only when nobody is left. Aboard means
+  the ship's own passengers with passengers-stay-aboard on; with it off, the units the ship would
+  take if it sailed, as many as fit. The odds and which ship defends are unchanged. Always on,
+  not a rule option. (0.11, issue #31)
 - **100 trade routes**, not the original's 12; past 12 the route list pages. Always on: the 12
   was the 1994 program's memory, not a rule. (0.9)
 - **Trade routes deliver boycotted goods**: after a Tea Party, a wagon or ship on a route unloads
   the boycotted good at a colony stop, as unloading by hand does. The original never unloaded it
   and carried it for good. In Europe it stays aboard, unsold, while the boycott lasts. Always on,
   not a rule option. (0.9)
+- **Route ended**: a human's wagon train or ship that stops following its trade route says so
+  on the message line, with the colony it is at or near and the reason: *no way to* the next
+  stop, the *way blocked* (every square beside it taken, or its step refused), or *its next stop
+  is gone*. The original dropped the route without a word, and the unit only turned up idle,
+  waiting for orders, with no hint that it had been on a route or why it stopped. The route
+  ends exactly when it did; only the message is new, and computer players' units are untouched.
+  Settings > Interface > **Route Ended: Silent** turns it off. (0.11; issue #32)
 
 ## Reports and popups
 
@@ -158,6 +195,15 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
 - **A slot that cannot be loaded says why**: (NEWER OPENCOL), (DAMAGED) or (NOT A SAVED GAME).
   (0.6)
 - **Keep the last 10 turns' autosaves**, to go back up to ten turns. (0.6)
+- **The save browser**: Load Game and Save Game list the slots on a page of their own, and the
+  chosen slot shows a small map of the game, as your nation knew it when you saved, and its
+  facts: your leader and nation, the difficulty, the season, year and turn, your colonies, your
+  gold, and when the file was saved. The pointer over a row shows that row. The map is drawn by the game's own minimap when the game is saved, and kept in the
+  `.SVX` (a THMB chunk no game reads; the game saved is the same with the browser on or off). A
+  1994 `.SAV`, or an `.SVX` from an older OpenCol, has no map: a box says so, and its facts are
+  still read from the file. An older OpenCol still loads the new saves (it skips the map). Still
+  the original's 10 slots. To turn it off and have the
+  original's list of lines: Settings > Saves, or `save-browser = off` in `OPENCOL.INI`. (0.11)
 
 ## Maps
 
@@ -251,6 +297,10 @@ with, in its saved games too; a 1994 saved game plays by the original's rules.
 
 ## By release
 
+- **0.11.0** (2026-11-08): the save browser (each saved game's map, nation, year, turn,
+  colonies and gold in Load Game and Save Game); a die for colony names; a unit that leaves its
+  trade route says why; a ship beaten at sea sinks alone; the trade route editor at any screen
+  size.
 - **0.10.0** (2026-11-03): hammers and bells past a build's or a Founding Father's cost carry
   over (on at first); passengers stay aboard their own ship (a rule option); each rule option
   has its own default.
