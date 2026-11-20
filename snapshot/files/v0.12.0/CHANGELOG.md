@@ -38,9 +38,11 @@ The original on the left, OpenCol on the right. Pictures live in `docs/changes/<
 | **Route ended**: a wagon train or ship that leaves its trade route says why (0.11) | ![The original: a wagon train boxed in by braves next to Jamestown has silently lost its route and waits with No Orders](docs/changes/route-ended/before.png) | ![OpenCol: the same moment, the top line reads Route ended: Wagon Train near Jamestown, way to Plymouth blocked](docs/changes/route-ended/after.png) |
 | **Save browser**: Load Game and Save Game show each saved game's map, nation, year, turn, colonies and gold (0.11) | ![The original's Load Game: a list of lines, Conquistador Daniel of the English, Spring 1716](docs/changes/save-browser/before.png) | ![OpenCol's Load Game: the slots on the left, the chosen game's map of the Americas on the right, and below it Daniel, English, Conquistador, Spring 1716, turn 340, 10 colonies, 11,099 gold, saved 2026-11-07 23:08](docs/changes/save-browser/after.png) |
 | **The trade route editor at any screen size**: a window over the map, not a box in its corner that a click on the map closed (0.11) | ![OpenCol 0.10 at 960 x 600: the route editor drawn in the map's top left corner, over the menu bar](docs/changes/route-editor-page/before.png) | ![The fix: the same editor in a window in the middle, over the dimmed map](docs/changes/route-editor-page/after.png) |
+| **The World View keeps your unit on screen**: zoomed in, the next unit or End of Turn no longer throws the map to the middle of the continent (0.12) | ![OpenCol 0.11 zoomed in: the next unit is a dragoon in Danville on the east coast, but the map has jumped to Hartford in the west](docs/changes/world-view-camera/before.png) | ![The fix: the same moment, the map glides to Danville and its dragoon](docs/changes/world-view-camera/after.png) |
+| **Left button drags the map**: in the World View, a drag that does not start on your unit pans the map instead of sending the unit off (0.12) | ![OpenCol 0.11: a left drag across the map has become the dragoon's go-to, a route of 17 turns to Hartford](docs/changes/left-drag-pans/before.png) | ![With Left button drags the map: the same drag has moved the map, and the dragoon still waits for orders](docs/changes/left-drag-pans/after.png) |
 
 Still without pictures: the volume sliders, Exit to Main Menu's question, the map editor's
-Place menu, trade routes and boycotts, ships leaving an abandoned colony.
+Place menu, trade routes and boycotts, ships leaving an abandoned colony, Follow the Active Unit.
 
 ## Running it
 
@@ -51,6 +53,10 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
 - **One file**: the program carries everything it needs. (0.3.1)
 - **Start it from anywhere**: the first time it asks for your game's folder, with your system's
   folder picker, and remembers it. Your game's folder is never changed. (0.5)
+- **Linux: no folder picker.** SDL3's needs xdg-desktop-portal or zenity, which many systems
+  lack. On Linux OpenCol now looks for the game beside it (or where it is started,
+  `--game FOLDER`, or `game =` in `OPENCOL.INI`), and if it is not there says where to put
+  OpenCol and stops. (0.12)
 - **Its own folder**: saved games in `saves`, maps in `maps`, the settings (`OPENCOL.INI`) and the
   log beside the program, so a copy on a USB stick takes everything with it. (0.7; `saves` and
   `maps` folders 0.8)
@@ -78,6 +84,17 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
   underneath still moves its view by squares, so the rules see nothing new. On at first;
   Settings > Display > World View turns it off. **Outside the Map**: the original's wood, or
   black. (0.9)
+- **The World View keeps your unit on screen**: zoomed in past the game's own closest zoom, the
+  map jumped after End of Turn, the next unit or a move, often to the middle of the continent,
+  and a click on the minimap could not bring it back. The camera went to the middle of the
+  game's own view, which stops at the map's edges: a view wider than the map is always at the
+  map's middle. Now the camera moves only when the unit (or the square the game centres on, or
+  the minimap's) is off the screen or near its edge, and goes to that square. The game's own
+  view moves as before, so the rules see nothing new. A fix of OpenCol's own World View; nothing
+  to turn off. (0.12)
+- **Follow the Active Unit**: in Settings > Display, the World View centres on the active unit
+  each time it is chosen or moves, on screen or not. Off at first (`follow-unit = on` in
+  `OPENCOL.INI`'s `[Display]`). (0.12)
 - **Screens over the map**: the colony, Europe, the reports and the Colonopedia can open in a
   window over the dimmed map. They keep the original's 320 x 200. (0.4)
 - **The trade route editor at any screen size**: on a screen larger than 320 x 200, TRADE >
@@ -87,6 +104,19 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
   the colony and the reports: in the middle of the screen, over the dimmed map or alone
   (Settings > Display > Screens), its clicks its own. The 320 x 200 screen was never affected.
   A fix of OpenCol's own larger screen; nothing to turn off. (0.11)
+- **The war's end no longer crashes**: when the King gave up (or won), his throne room broke
+  the game's memory at any Screen Size but 320 x 200 ("the memory chain is broken"), and a won
+  war then stopped on the 1994 closing program, which OpenCol does not run. Now the game goes
+  straight from the King's speech to the score, the Hall of Fame and Keep Playing, as the
+  original did after its closing pictures. (0.12)
+- **Two more "memory chain is broken" crashes**: at the start of a turn, opening the Colonopedia
+  from William Brewster's choice of recruit (or from the Fountain of Youth's) redrew Europe over
+  the map's own memory at any Screen Size but 320 x 200; and at 320 x 200, a unit stepping at
+  the edge of the view could have the map redrawn one row above the screen, past its end. Found
+  by a test that plays a game with random keys and clicks. (0.12)
+- **A World View crash after loading a game**: two parts of OpenCol each had a record called
+  `Kept`, and in a build that did not inline them, one's setup ran for the other and the World
+  View's next frame freed memory it did not own. Seen in debug builds since 0.10. (0.12)
 - **Pixels**: square, or as tall as a 1994 monitor showed them. (0.4)
 - **Stretch**: fill a large window, its shape kept, the pixels sharp. (0.6)
 
@@ -113,6 +143,13 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony.
 - **The map scrolls** when the pointer rests at the window's edge, follows the middle mouse
   button, and the **wheel zooms**. (0.6)
 - **Edge scroll speed**: a slider in Settings > Input, 1 to 10. (0.9)
+- **Left button drags the map**: in the World View, a drag with the left button moves the map,
+  as in most map programs. A drag that starts on the active unit's square is still the
+  original's go-to drag, and a click is still a click. In the original, holding the left button
+  anywhere on the map for about a second gave the active unit a go-to order to wherever the
+  button was let go, so a drag meant to move the map sent ships on long routes that used up their
+  moves. On at first; Settings > Input > Left button drags the map, or `left-drag = off` in
+  `OPENCOL.INI`'s `[Input]`, gives the original's hold back. (0.12)
 - **The go-to route**: while you drag a unit, the squares it will go through, the turn it
   reaches each stop, amber where it meets another nation, a red cross where it cannot get; a
   unit already on its way shows its route under the pointer; a trade route's leg is brown. (0.6)
@@ -297,6 +334,9 @@ with, in its saved games too; a 1994 saved game plays by the original's rules.
 
 ## By release
 
+- **0.12.0** (2026-11-20): the World View keeps your unit on screen; the left button drags the
+  map; Follow the Active Unit; Linux says where to put OpenCol; three "memory chain is broken"
+  crashes fixed (the war's end, Europe over the map, a map region past the screen's end).
 - **0.11.0** (2026-11-08): the save browser (each saved game's map, nation, year, turn,
   colonies and gold in Load Game and Save Game); a die for colony names; a unit that leaves its
   trade route says why; a ship beaten at sea sinks alone; the trade route editor at any screen
