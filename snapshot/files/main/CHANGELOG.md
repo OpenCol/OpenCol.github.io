@@ -42,7 +42,7 @@ The original on the left, OpenCol on the right. Pictures live in `docs/changes/<
 | **Left button drags the map**: in the World View, a drag that does not start on your unit pans the map instead of sending the unit off (0.12) | ![OpenCol 0.11: a left drag across the map has become the dragoon's go-to, a route of 17 turns to Hartford](docs/changes/left-drag-pans/before.png) | ![With Left button drags the map: the same drag has moved the map, and the dragoon still waits for orders](docs/changes/left-drag-pans/after.png) |
 
 Still without pictures: the volume sliders, Exit to Main Menu's question, the map editor's
-Place menu, trade routes and boycotts, ships leaving an abandoned colony, Follow the Active Unit.
+Place menu, trade routes and boycotts, ships leaving an abandoned colony, Follow the Active Unit, Plant Forest.
 
 ## Running it
 
@@ -331,9 +331,22 @@ with, in its saved games too; a 1994 saved game plays by the original's rules.
   - A saved game with it on loads only in an OpenCol that has it.
   - *Turn it off*: `hammers-and-bells-carry-over = 0` in `OPENCOL.INI`'s `[Rules]`, before a new
     game.
+- **pioneers-plant-forest** (off at first; the default is for the community to decide): a
+  pioneer can plant forest on cleared land. (0.13, issue #58)
+  - *Why*: a pioneer can clear a forest, but nothing turns it back, so a colony's lumber has to
+    come from ever further away.
+  - *With it on*: **Orders > Plant Forest** (or **N**) for a pioneer on open land that is not
+    plowed. After the turns clearing that forest takes (half for a Hardy Pioneer) and 20 tools,
+    the square becomes the forest of its land. A road stays. Plowed land is refused, and so is a
+    colony's or village's square. The pioneer shows the plow order's letter while it works. The
+    computer players never plant.
+  - A saved game with it on loads only in an OpenCol that has it.
+  - *Turn it on*: `pioneers-plant-forest = 1` in `OPENCOL.INI`'s `[Rules]`, before a new game.
 
 ## By release
 
+- **0.13.0** (2026-11-21): a rule option for pioneers to plant forest on cleared land
+  (`pioneers-plant-forest`, off at first).
 - **0.12.0** (2026-11-20): the World View keeps your unit on screen; the left button drags the
   map; Follow the Active Unit; Linux says where to put OpenCol; three "memory chain is broken"
   crashes fixed (the war's end, Europe over the map, a map region past the screen's end).
