@@ -254,6 +254,19 @@ Place menu, trade routes and boycotts, ships leaving an abandoned colony, Follow
   and Founding Fathers are made by a new game on it. (0.8)
 - Saving `AMER2` in the editor changes the America map for OpenCol only; New Game then shows
   **AMERICA (edited)**. (0.6)
+- **Map generators, the groundwork** (addition): the New World's making is now a block of its own
+  inside the game's map building, which another generator can replace while everything around it
+  (the frame, the continents, the Pacific, the start squares) stays the original's. A Lua script
+  can be that generator, with the original's own steps and random numbers open to it, so that the
+  original generator can be written in Lua and checked against it. Not a player's choice yet: only
+  the tests and the `OPENCOL_MAP_GENERATOR` switch pick one; without it nothing changes.
+  (0.14)
+- **Classic (Lua)** (addition): the original's New World generator, rewritten in Lua
+  (`MAPGEN/classic/generator.lua`), the first generator that ships with OpenCol and the one to copy
+  to write your own. It makes exactly the original's map: the same land, climate, hills, forests
+  and rivers, from the same random numbers, for every CUSTOMIZE choice; a test compares the two
+  map for map. Not a player's choice yet: `OPENCOL_MAP_GENERATOR=MAPGEN/classic/generator.lua`
+  picks it; the original's own code stays the default. (0.14)
 
 ## The map editor
 
@@ -345,6 +358,8 @@ with, in its saved games too; a 1994 saved game plays by the original's rules.
 
 ## By release
 
+- **0.14.0** (2026-11-22): map generators, the groundwork; Classic (Lua), the original's New
+  World generator rewritten in Lua and proven identical (neither a player's choice yet).
 - **0.13.0** (2026-11-21): a rule option for pioneers to plant forest on cleared land
   (`pioneers-plant-forest`, off at first).
 - **0.12.0** (2026-11-20): the World View keeps your unit on screen; the left button drags the
